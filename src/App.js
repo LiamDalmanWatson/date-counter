@@ -9,6 +9,33 @@ export default function App() {
     </div>
   );
 }
+function Steps() {
+  const [step, setStep] = useState(0);
+
+  function minusStep() {
+    if (step > 0) setStep(step - 1);
+  }
+
+  function addStep() {
+    if (step < 31) setStep(step + 5);
+  }
+
+  return (
+    <div>
+      <div className="buttons">
+        <button onClick={() => minusStep()}>-</button>
+        Step: {step}
+        <button
+          onClick={() => {
+            addStep();
+          }}
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -25,37 +52,10 @@ function Counter() {
     <div>
       <div className="buttons">
         <button onClick={() => minusCount()}>-</button>
-        <div>Count: {count}</div>
+        Count: {count}
         <button
           onClick={() => {
             addCount();
-          }}
-        >
-          +
-        </button>
-      </div>
-    </div>
-  );
-}
-function Steps() {
-  const [step, setStep] = useState(0);
-
-  function minusStep() {
-    if (step > 0) setStep(step - 1);
-  }
-
-  function addStep() {
-    if (step < 31) setStep(step + 5);
-  }
-
-  return (
-    <div>
-      <div className="buttons">
-        <button onClick={() => minusStep()}>-</button>
-        <div>Step: {step}</div>
-        <button
-          onClick={() => {
-            addStep();
           }}
         >
           +
