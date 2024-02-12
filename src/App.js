@@ -5,13 +5,39 @@ export default function App() {
   return (
     <div className="App">
       <Counter />
-      <minusStep />
-      <addStep />
+      <Steps />
     </div>
   );
 }
 
 function Counter() {
+  const [count, setCount] = useState(0);
+
+  function minusCount() {
+    if (count > 0) setCount(count - 1);
+  }
+
+  function addCount() {
+    if (count < 30) setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <div className="buttons">
+        <button onClick={() => minusCount()}>-</button>
+        <div>Count: {count}</div>
+        <button
+          onClick={() => {
+            addCount();
+          }}
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+function Steps() {
   const [step, setStep] = useState(0);
 
   function minusStep() {
