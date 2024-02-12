@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 export default function App() {
   return (
     <div className="App">
-      <Counter />
       <Steps />
+      <Counter />
+      <Calendar />
     </div>
   );
 }
@@ -17,7 +18,7 @@ function Steps() {
   }
 
   function addStep() {
-    if (step < 31) setStep(step + 5);
+    if (step < 31) setStep(step + 1);
   }
 
   return (
@@ -45,7 +46,7 @@ function Counter() {
   }
 
   function addCount() {
-    if (count < 30) setCount(count + 1);
+    if (count < 31) setCount(count + 1);
   }
 
   return (
@@ -61,6 +62,25 @@ function Counter() {
           +
         </button>
       </div>
+    </div>
+  );
+}
+
+function Calendar() {
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <div>
+      <p> days from today is {date.toDateString()}</p>
     </div>
   );
 }
